@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="478c5662-0f3f-4a1b-ae30-c8f4f0df29cc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://api.microsofttranslator.com/V1/SOAP.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Soap.wsdl" MetadataType="Wsdl" ID="821ba53a-895a-4f9a-b69f-437da086960d" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V1/SOAP.svc" />
+    <MetadataFile FileName="Soap.xsd" MetadataType="Schema" ID="3369a6ab-ed32-4205-88db-88ce2ac4ab33" SourceId="1" SourceUrl="http://api.microsofttranslator.com/v1/Soap.svc?xsd=xsd2" />
+    <MetadataFile FileName="Soap1.xsd" MetadataType="Schema" ID="f35d5a5b-aa17-44d7-8185-2771b40e94bf" SourceId="1" SourceUrl="http://api.microsofttranslator.com/v1/Soap.svc?xsd=xsd0" />
+    <MetadataFile FileName="Soap2.xsd" MetadataType="Schema" ID="73f8d2b9-2dea-4876-b34c-da3beb90dc22" SourceId="1" SourceUrl="http://api.microsofttranslator.com/v1/Soap.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

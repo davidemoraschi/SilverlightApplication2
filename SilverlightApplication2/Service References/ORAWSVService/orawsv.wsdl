@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/orawsv" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/" name="orawsv" targetNamespace="http://xmlns.oracle.com/orawsv" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/orawsv">
+      <xsd:element name="query">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="DDL_text" type="xsd:string" />
+            <xsd:element name="query_text">
+              <xsd:complexType>
+                <xsd:simpleContent>
+                  <xsd:extension base="xsd:string">
+                    <xsd:attribute name="type">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:NMTOKEN">
+                          <xsd:enumeration value="SQL" />
+                          <xsd:enumeration value="XQUERY" />
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:attribute>
+                  </xsd:extension>
+                </xsd:simpleContent>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+              <xsd:element name="bind">
+                <xsd:complexType>
+                  <xsd:simpleContent>
+                    <xsd:extension base="xsd:string">
+                      <xsd:attribute name="name" type="xsd:string" />
+                    </xsd:extension>
+                  </xsd:simpleContent>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="bindXML">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:any />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:choice>
+            <xsd:element minOccurs="0" name="null_handling">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:NMTOKEN">
+                  <xsd:enumeration value="DROP_NULLS" />
+                  <xsd:enumeration value="NULL_ATTR" />
+                  <xsd:enumeration value="EMPTY_TAG" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="max_rows" type="xsd:positiveInteger" />
+            <xsd:element minOccurs="0" name="skip_rows" type="xsd:positiveInteger" />
+            <xsd:element minOccurs="0" name="pretty_print" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="indentation_width" type="xsd:positiveInteger" />
+            <xsd:element minOccurs="0" name="rowset_tag" type="xsd:string" />
+            <xsd:element minOccurs="0" name="row_tag" type="xsd:string" />
+            <xsd:element minOccurs="0" name="item_tags_for_coll" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="queryOut">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:any />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="QueryInput">
+    <part name="body" element="tns:query" />
+  </message>
+  <message name="XMLOutput">
+    <part name="body" element="tns:queryOut" />
+  </message>
+  <portType name="ORAWSVPortType">
+    <operation name="XMLFromQuery">
+      <input message="tns:QueryInput" />
+      <output message="tns:XMLOutput" />
+    </operation>
+  </portType>
+  <binding name="ORAWSVBinding" type="tns:ORAWSVPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="XMLFromQuery">
+      <soap:operation soapAction="http://bertoaldo:8081/orawsv" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ORAWSVService">
+    <documentation>Oracle Web Service</documentation>
+    <port name="ORAWSVPort" binding="tns:ORAWSVBinding">
+      <soap:address location="http://bertoaldo:8081/orawsv" />
+    </port>
+  </service>
+</definitions>

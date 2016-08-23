@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/orawsv/MTIDAE_INTEGRACION/WS_SYSDATE" name="WS_SYSDATE" targetNamespace="http://xmlns.oracle.com/orawsv/MTIDAE_INTEGRACION/WS_SYSDATE" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/orawsv/MTIDAE_INTEGRACION/WS_SYSDATE">
+      <xsd:element name="WS_SYSDATEInput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="P_OUT-VARCHAR2-OUT">
+              <xsd:complexType />
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WS_SYSDATEOutput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="P_OUT" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="WS_SYSDATEInputMessage">
+    <part name="parameters" element="tns:WS_SYSDATEInput" />
+  </message>
+  <message name="WS_SYSDATEOutputMessage">
+    <part name="parameters" element="tns:WS_SYSDATEOutput" />
+  </message>
+  <portType name="WS_SYSDATEPortType">
+    <operation name="WS_SYSDATE">
+      <input message="tns:WS_SYSDATEInputMessage" />
+      <output message="tns:WS_SYSDATEOutputMessage" />
+    </operation>
+  </portType>
+  <binding name="WS_SYSDATEBinding" type="tns:WS_SYSDATEPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="WS_SYSDATE">
+      <soap:operation soapAction="WS_SYSDATE" />
+      <input>
+        <soap:body use="literal" parts="parameters" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="parameters" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WS_SYSDATEService">
+    <documentation>Oracle Web Service</documentation>
+    <port name="WS_SYSDATEPort" binding="tns:WS_SYSDATEBinding">
+      <soap:address location="http://bertoaldo:8081/orawsv/MTIDAE_INTEGRACION/WS_SYSDATE" />
+    </port>
+  </service>
+</definitions>

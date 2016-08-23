@@ -1,0 +1,30 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="ORAWSVBinding" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="WS_SYSDATEBinding" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_LanguageService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://bertoaldo:8081/orawsv" binding="basicHttpBinding"
+                bindingConfiguration="ORAWSVBinding" contract="ORAWSVService.ORAWSVPortType"
+                name="ORAWSVPort" />
+            <endpoint address="http://bertoaldo:8081/orawsv/MTIDAE_INTEGRACION/WS_SYSDATE"
+                binding="basicHttpBinding" bindingConfiguration="WS_SYSDATEBinding"
+                contract="WS_SYSDATEService.WS_SYSDATEPortType" name="WS_SYSDATEPort" />
+            <endpoint address="http://api.microsofttranslator.com/v1/Soap.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_LanguageService"
+                contract="ServiceReference1.LanguageService" name="BasicHttpBinding_LanguageService" />
+        </client>
+    </system.serviceModel>
+</configuration>
